@@ -13,12 +13,6 @@ namespace RoleService.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<UserRole>()
-                .HasOne<Role>()
-                .WithMany(t => t.UserRoles)
-                .HasForeignKey("RoleId")
-                .IsRequired();
         }
     }
 }
