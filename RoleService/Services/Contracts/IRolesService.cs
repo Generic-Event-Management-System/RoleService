@@ -9,5 +9,6 @@ namespace RoleService.Services.Contracts
         Task<IEnumerable<RoleResponseDto>> GetRoles();
         Task<RoleResponseDto> GetRole(int roleId);
         Task<RoleResponseDto> UpdateRole(int roleId, RoleRequestDto roleRequestDto);
+        Task DeleteRole(int roleId);
     }
 }

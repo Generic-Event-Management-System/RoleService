@@ -55,6 +55,15 @@ namespace RoleService.Services
             return _mapper.Map<RoleResponseDto>(role);
         }
 
+        public async Task DeleteRole(int roleId)
+        {
+            var role = await GetRoleOrThrowNotFoundException(roleId);
+
+            _dbContext.Roles.Remove(role);
+
+            await _dbContext.SaveChangesAsync();
+        }
+
         private async Task<Role> GetRoleOrThrowNotFoundException(int roleId)
         {
             var role = await _dbContext.Roles.FirstOrDefaultAsync(r => r.Id == roleId);

@@ -39,5 +39,12 @@ namespace RoleService.Controllers
         {
             return Ok(await _rolesService.UpdateRole(id, roleRequestDto));
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteRole(int id)
+        {
+            await _rolesService.DeleteRole(id);
+            return NoContent();
+        }
     }
 }
