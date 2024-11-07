@@ -1,8 +1,6 @@
-﻿using RoleService.Models.Entities;
-
-namespace RoleService.Models.Dto
+﻿namespace RoleService.Models.Dto
 {
-    public class RoleDto
+    public class RoleRequestDto
     {
         public required string Name { get; set; }
         public required string Description { get; set; }
