@@ -8,8 +8,10 @@ namespace RoleService.Mapping
     {
         public MappingProfile() 
         {
-            CreateMap<Role, RoleDto>();
-            CreateMap<RoleDto, Role>();
+            CreateMap<Role, RoleRequestDto>();
+            CreateMap<RoleRequestDto, Role>();
+            CreateMap<RoleResponseDto, Role>();
+            CreateMap<Role, RoleResponseDto>();
         }
     }
 }
