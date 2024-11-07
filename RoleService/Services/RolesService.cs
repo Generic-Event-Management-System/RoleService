@@ -44,6 +44,17 @@ namespace RoleService.Services
             return _mapper.Map<RoleResponseDto>(role);
         }
 
+        public async Task<RoleResponseDto> UpdateRole(int roleId, RoleRequestDto roleRequestDto)
+        {
+            var role = await GetRoleOrThrowNotFoundException(roleId);
+
+            _mapper.Map(roleRequestDto, role);
+
+            await _dbContext.SaveChangesAsync();
+
+            return _mapper.Map<RoleResponseDto>(role);
+        }
+
         private async Task<Role> GetRoleOrThrowNotFoundException(int roleId)
         {
             var role = await _dbContext.Roles.FirstOrDefaultAsync(r => r.Id == roleId);

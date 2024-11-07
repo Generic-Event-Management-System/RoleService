@@ -8,5 +8,6 @@ namespace RoleService.Services.Contracts
         Task<RoleResponseDto> CreateRole(RoleRequestDto roleDto);
         Task<IEnumerable<RoleResponseDto>> GetRoles();
         Task<RoleResponseDto> GetRole(int roleId);
+        Task<RoleResponseDto> UpdateRole(int roleId, RoleRequestDto roleRequestDto);
     }
 }

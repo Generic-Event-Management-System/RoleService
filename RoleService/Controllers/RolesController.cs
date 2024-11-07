@@ -33,5 +33,11 @@ namespace RoleService.Controllers
         {
             return Ok(await _rolesService.GetRole(id));
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateRole(int id, RoleRequestDto roleRequestDto)
+        {
+            return Ok(await _rolesService.UpdateRole(id, roleRequestDto));
+        }
     }
 }
