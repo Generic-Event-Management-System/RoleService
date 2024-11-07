@@ -21,5 +21,11 @@ namespace RoleService.Controllers
         {
             return Ok(await _rolesService.CreateRole(roleDto));
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetRoles()
+        {
+            return Ok(await _rolesService.GetRoles());
+        }
     }
 }

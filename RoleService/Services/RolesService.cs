@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using RoleService.Models.Dto;
 using RoleService.Models.Entities;
 using RoleService.Persistence;
@@ -26,6 +27,13 @@ namespace RoleService.Services
             await _dbContext.SaveChangesAsync();
 
             return _mapper.Map<RoleResponseDto>(role);
+        }
+
+        public async Task<IEnumerable<RoleResponseDto>> GetRoles()
+        {
+            var roles = await _dbContext.Roles.ToListAsync();
+
+            return _mapper.Map<IEnumerable<RoleResponseDto>>(roles);
         }
     }
 }
