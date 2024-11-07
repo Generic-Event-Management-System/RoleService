@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RoleService.Models.Dto;
 using RoleService.Services.Contracts;
 
 namespace RoleService.Controllers
@@ -13,6 +14,12 @@ namespace RoleService.Controllers
         public RolesController(IRolesService rolesService)
         {
             _rolesService = rolesService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateRole(RoleRequestDto roleDto)
+        {
+            return Ok(await _rolesService.CreateRole(roleDto));
         }
     }
 }

@@ -1,6 +1,10 @@
-﻿namespace RoleService.Services.Contracts
+﻿using RoleService.Models.Dto;
+using RoleService.Models.Entities;
+
+namespace RoleService.Services.Contracts
 {
     public interface IRolesService
     {
+        Task<RoleResponseDto> CreateRole(RoleRequestDto roleDto);
     }
 }
