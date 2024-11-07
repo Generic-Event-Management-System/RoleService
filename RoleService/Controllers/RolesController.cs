@@ -27,5 +27,11 @@ namespace RoleService.Controllers
         {
             return Ok(await _rolesService.GetRoles());
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetRole(int id)
+        {
+            return Ok(await _rolesService.GetRole(id));
+        }
     }
 }

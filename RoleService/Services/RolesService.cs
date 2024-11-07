@@ -4,6 +4,7 @@ using RoleService.Models.Dto;
 using RoleService.Models.Entities;
 using RoleService.Persistence;
 using RoleService.Services.Contracts;
+using SharedUtilities.CustomExceptions;
 
 namespace RoleService.Services
 {
@@ -34,6 +35,23 @@ namespace RoleService.Services
             var roles = await _dbContext.Roles.ToListAsync();
 
             return _mapper.Map<IEnumerable<RoleResponseDto>>(roles);
+        }
+
+        public async Task<RoleResponseDto> GetRole(int roleId)
+        {
+            var role = await GetRoleOrThrowNotFoundException(roleId);
+
+            return _mapper.Map<RoleResponseDto>(role);
+        }
+
+        private async Task<Role> GetRoleOrThrowNotFoundException(int roleId)
+        {
+            var role = await _dbContext.Roles.FirstOrDefaultAsync(r => r.Id == roleId);
+
+            if (role == null)
+                throw new NotFoundException("Role not found");
+
+            return role;
         }
     }
 }
